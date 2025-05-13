@@ -92,7 +92,8 @@ public class main{
         //When the login button is pressed, the data is collected and checks if this is in the database
         login.addActionListener(e -> {
             String username_text = username_input.getText();
-            String password_text = password_input.getText();
+            char[] password_list = password_input.getPassword();
+            String password_text = new String(password_list); //Check if this works
             //Change the card layout to display a different panel
             if(list.containsKey(username_text) && list.get(username_text).getPassword().equals(password_text)){
                 cardLayout.show(panel, "mainPanel");
@@ -103,15 +104,63 @@ public class main{
 
 
         });
-
-        JPanel signUpPanel = new JPanel();
+        //Signup Panel
+        JPanel signUpPanel = new JPanel(null);
         signUpPanel.setPreferredSize(new Dimension(2000,2000));
 
-        //ERROR: Check why this is not puttin in the right position
-        JLabel signUp = new JLabel("Sign Up");
-        signUp.setBounds(525,150,800,250);
-        signUp.setFont(new Font("Times New Roman",Font.PLAIN,80));
+        JLabel signUp = new JLabel("Sign up to the Volunteering Hub");
+        signUp.setBounds(475,100,800,250);
+        signUp.setFont(new Font("Times New Roman",Font.PLAIN,60));
         signUpPanel.add(signUp);
+
+        JTextField username_input_signIn = new JTextField("");
+        username_input_signIn.setBounds(500,353,200,30);
+        username_input_signIn.setFont(new Font("Times New Roman",Font.PLAIN,40));
+        username_input_signIn.setBackground(Color.LIGHT_GRAY);
+        username_input_signIn.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        signUpPanel.add(username_input_signIn);
+
+
+        JLabel username_signIn = new JLabel("Username: ");
+        username_signIn.setBounds(315,350,200,30);
+        username_signIn.setFont(new Font("Times New Roman",Font.PLAIN,40));
+        username_signIn.setBackground(Color.cyan);
+        signUpPanel.add(username_signIn);
+
+        JPasswordField password_input_signIn = new JPasswordField("");
+        password_input_signIn.setBounds(500,478,200,30);
+        password_input_signIn.setFont(new Font("Times New Roman",Font.PLAIN,40));
+        password_input_signIn.setBackground(Color.LIGHT_GRAY);
+        password_input_signIn.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        signUpPanel.add(password_input_signIn);
+
+        JLabel password_signIn = new JLabel("Password: ");
+        password_signIn.setBounds(325,475,200,30);
+        password_signIn.setFont(new Font("Times New Roman",Font.PLAIN,40));
+        password_signIn.setBackground(Color.cyan);
+        signUpPanel.add(password_signIn);
+
+        JTextField email_Input_signIn = new JTextField("");
+        email_Input_signIn.setBounds(1150,353,200,30);
+        email_Input_signIn.setFont(new Font("Times New Roman",Font.PLAIN,40));
+        email_Input_signIn.setBackground(Color.LIGHT_GRAY);
+        email_Input_signIn.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        signUpPanel.add(email_Input_signIn);
+
+
+        JLabel email_signIn = new JLabel("Email: ");
+        email_signIn.setBounds(1030,350,200,30);
+        email_signIn.setFont(new Font("Times New Roman",Font.PLAIN,40));
+        email_signIn.setBackground(Color.cyan);
+        signUpPanel.add(email_signIn);
+
+
+        JButton signIn = new JButton("Log In");
+        signIn.setBounds(700,650,300,60);
+        signIn.setFont(new Font("Times New Roman",Font.PLAIN,30));
+        signUpPanel.add(signIn);
+
+
 
 
 
