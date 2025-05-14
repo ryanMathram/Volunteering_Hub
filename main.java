@@ -9,6 +9,16 @@ public class main{
         Map<String,User> users = new HashMap<>();
         Map<String, Event> events = new HashMap<>();
 
+        Event event1 = new Event("San Antonio Food Bank", 50, 40,"5200 Historic, Old Hwy 90 W, San Antonio, TX 78227", "At the San Antonio Food Bank, volunteers will help sort, package, and distribute food to individuals and families in need. The work supports " +
+                "the organization’s mission to fight hunger and provide essential nutrition across the community.","05/25/2025", "10:00 AM", "davidcastro@gmail.com", "David Castro");
+        events.put("San Antonio Food Bank", event1);
+
+        Event event2 = new Event("Haven for Hope", 70, 50, "1 Haven for Hope Way, San Antonio, TX 78207", "At Haven for Hope, volunteers will assist with meal service, facility upkeep, and engaging with individuals experiencing" +
+                " homelessness to provide support and dignity. This event fosters compassion and community by contributing to efforts that help individuals transition from crisis to stability.", "05/29/2025", "2:00 PM", "javiersalad@icloud.com", "Javier Saldana");
+        events.put("Haven for Hope", event2);
+
+
+
         //Creates the frame of the entire canvas, setting the bounds and to leave on the screen
         JFrame frame = new JFrame("Volunteering Hub");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -97,7 +107,7 @@ public class main{
             String password_text = new String(password_list); //Check if this works
             //Change the card layout to display a different panel
             if(users.containsKey(username_text) && users.get(username_text).getPassword().equals(password_text)){
-                cardLayout.show(panel, "mainPanel");
+                cardLayout.show(panel, "events");
             }
             else{
                 JOptionPane.showMessageDialog(null, "Invalid Username or Password");
@@ -175,7 +185,7 @@ public class main{
             boolean isOrganizer = organizer_checkBox.isSelected();
             User user = new User(username_text_signIn, password_text_signIn, email_text_signIn, isOrganizer);
             users.put(username_text_signIn, user);
-            cardLayout.show(panel, "events");
+            cardLayout.show(panel, "mainPanel");
             JOptionPane.showMessageDialog(null, "Account Created Successfully");
 
         });
@@ -184,9 +194,14 @@ public class main{
         eventab.setPreferredSize(new Dimension(2000,2000));
 
         JLabel eventsLabel = new JLabel("Events");
-        eventsLabel.setBounds(700,50,800,250);
+        eventsLabel.setBounds(800,50,800,250);
         eventsLabel.setFont(new Font("Times New Roman",Font.PLAIN,60));
         eventab.add(eventsLabel);
+
+
+
+
+
 
 
 
