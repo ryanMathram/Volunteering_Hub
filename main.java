@@ -17,7 +17,9 @@ public class main{
                 " homelessness to provide support and dignity. This event fosters compassion and community by contributing to efforts that help individuals transition from crisis to stability.", "05/29/2025", "2:00 PM", "javiersalad@icloud.com", "Javier Saldana");
         events.put("Haven for Hope", event2);
 
-
+        Event event3 = new Event("Lockhill Elementary Education Night", 10,15, "5050 De Zavala Rd, San Antonio, TX 78249", "At this volunteering opportunity, you will help " +
+                "adults/teachers in whichever station needs help such as the IT section, Food section, etc.", "06/01/2025", "11:00 AM", "daniellemills@android.com", "Danielle Mills");
+        events.put("Lockhill Elementary Education Night", event3);
 
         //Creates the frame of the entire canvas, setting the bounds and to leave on the screen
         JFrame frame = new JFrame("Volunteering Hub");
@@ -25,7 +27,7 @@ public class main{
         frame.setSize(2000,2000);
         frame.setLayout(null);
 
-        //Creets the card layout and the panel
+        //Creates the card layout and the panel
         CardLayout cardLayout = new CardLayout();
         JPanel panel = new JPanel(cardLayout);
         panel.setBounds(0,0,2000,2000);
