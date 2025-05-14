@@ -6,7 +6,8 @@ import java.util.Map;
 public class main{
     public static void main(String[] args) {
         //HashMap data structure is used by a key,value statement of the username and the User Object in order to store each user
-        Map<String,User> list = new HashMap<>();
+        Map<String,User> users = new HashMap<>();
+        Map<String, Event> events = new HashMap<>();
 
         //Creates the frame of the entire canvas, setting the bounds and to leave on the screen
         JFrame frame = new JFrame("Volunteering Hub");
@@ -95,7 +96,7 @@ public class main{
             char[] password_list = password_input.getPassword();
             String password_text = new String(password_list); //Check if this works
             //Change the card layout to display a different panel
-            if(list.containsKey(username_text) && list.get(username_text).getPassword().equals(password_text)){
+            if(users.containsKey(username_text) && users.get(username_text).getPassword().equals(password_text)){
                 cardLayout.show(panel, "mainPanel");
             }
             else{
@@ -154,11 +155,38 @@ public class main{
         email_signIn.setBackground(Color.cyan);
         signUpPanel.add(email_signIn);
 
+        JCheckBox organizer_checkBox = new JCheckBox("Organizer");
+        organizer_checkBox.setBounds(1020,490,400,50);
+        organizer_checkBox.setFont(new Font("Times New Roman",Font.PLAIN,35));
+        signUpPanel.add(organizer_checkBox);
 
-        JButton signIn = new JButton("Log In");
+
+        JButton signIn = new JButton("Create Account");
         signIn.setBounds(700,650,300,60);
         signIn.setFont(new Font("Times New Roman",Font.PLAIN,30));
         signUpPanel.add(signIn);
+
+        //When the sign-up button is pressed, the data is collected and checks if this is in the database
+        signIn.addActionListener(e -> {
+            String username_text_signIn = username_input_signIn.getText();
+            char[] password_list_signIn = password_input_signIn.getPassword();
+            String password_text_signIn = new String(password_list_signIn);
+            String email_text_signIn = email_Input_signIn.getText();
+            boolean isOrganizer = organizer_checkBox.isSelected();
+            User user = new User(username_text_signIn, password_text_signIn, email_text_signIn, isOrganizer);
+            users.put(username_text_signIn, user);
+            cardLayout.show(panel, "events");
+            JOptionPane.showMessageDialog(null, "Account Created Successfully");
+
+        });
+
+        JPanel eventab = new JPanel(null);
+        eventab.setPreferredSize(new Dimension(2000,2000));
+
+        JLabel eventsLabel = new JLabel("Events");
+        eventsLabel.setBounds(700,50,800,250);
+        eventsLabel.setFont(new Font("Times New Roman",Font.PLAIN,60));
+        eventab.add(eventsLabel);
 
 
 
@@ -168,15 +196,18 @@ public class main{
         panel.add(mainPanel, "mainPanel");
         panel.add(loginPanel, "loginPanel");
         panel.add(signUpPanel, "signUpPanel");
+        panel.add(eventab, "events");
         cardLayout.show(panel, "mainPanel");
 
         //When pressed the login button, the page will change to the login page(the cardLayout changes the panel from mainPanel to loginPanel)
         button.addActionListener(e -> cardLayout.show(panel, "loginPanel"));
         button2.addActionListener(e -> cardLayout.show(panel, "signUpPanel"));
 
+
         frame.setVisible(true);
 
     }
+
 }
 
 
