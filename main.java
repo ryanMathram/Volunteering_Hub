@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +9,16 @@ public class main{
         //HashMap data structure is used by a key,value statement of the username and the User Object in order to store each user
         Map<String,User> users = new HashMap<>();
         Map<String, Event> events = new HashMap<>();
+
+        User user1 = new User("gluski", "gluski", "gluski@gmail.com", true);
+        users.put("gluski", user1);
+
+        User user2 = new User("RedFlame", "RedFlame", "redFlame@icloud.com", false);
+        users.put("RedFlame", user2);
+
+        User user3 = new User("Kentrell", "NBAYoungboy", "nbayb@gmail.com", false);
+        users.put("Kentrell", user3);
+
 
         Event event1 = new Event("San Antonio Food Bank", 50, 40,"5200 Historic, Old Hwy 90 W, San Antonio, TX 78227", "At the San Antonio Food Bank, volunteers will help sort, package, and distribute food to individuals and families in need. The work supports " +
                 "the organization’s mission to fight hunger and provide essential nutrition across the community.","05/25/2025", "10:00 AM", "davidcastro@gmail.com", "David Castro");
@@ -194,11 +205,43 @@ public class main{
 
         JPanel eventab = new JPanel(null);
         eventab.setPreferredSize(new Dimension(2000,2000));
+        eventab.setLayout(new BoxLayout(eventab,BoxLayout.Y_AXIS));
 
-        JLabel eventsLabel = new JLabel("Events");
-        eventsLabel.setBounds(800,50,800,250);
-        eventsLabel.setFont(new Font("Times New Roman",Font.PLAIN,60));
-        eventab.add(eventsLabel);
+        //Fix Event Scroller
+        for(Event e: events.values()){
+            JPanel eventPanel = new JPanel();
+            eventPanel.setPreferredSize(new Dimension(100,100));
+            eventPanel.setLayout(new BorderLayout());
+            eventPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+            JLabel event_info = new JLabel("<html><b>" + e.getName() + "</b><br>" + e.getDate() +  " at " + e.getTime()+ "<br>" + e.getLocation()+ "</html>");
+            event_info.setFont(new Font("Times New Roman",Font.PLAIN,30));
+            event_info.setBounds(100,350,200,30);
+
+            JButton event_button = new JButton("Register");
+            event_button.setBounds(700,650,300,60);
+            event_button.setFont(new Font("Times New Roman",Font.PLAIN,30));
+
+
+            eventPanel.add(event_info);
+            eventPanel.add(event_button);
+
+            event_button.addActionListener(ae ->{
+                JOptionPane.showMessageDialog(null, "Registered Successfully");
+            });
+
+            eventab.add(eventPanel);
+        }
+        JScrollPane eventscroll = new JScrollPane(eventab);
+        eventscroll.getVerticalScrollBar().setUnitIncrement(20);
+        panel.add(eventscroll, "events");
+
+
+
+        //JLabel eventsLabel = new JLabel("Events");
+        //eventsLabel.setBounds(800,50,800,250);
+        //eventsLabel.setFont(new Font("Times New Roman",Font.PLAIN,60));
+        //eventab.add(eventsLabel);
 
 
 
