@@ -1,6 +1,9 @@
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,14 +59,30 @@ public class main{
         JButton button = new JButton("Log In");
         button.setBounds(700,500,300,60);
         button.setFont(new Font("Times New Roman",Font.PLAIN,15));
+        button.setBorder(new LineBorder(Color.BLACK, 2,true));
 
         JButton button2 = new JButton("Sign Up");
         button2.setBounds(700,600,300,60);
         button2.setFont(new Font("Times New Roman",Font.PLAIN,15));
+        button2.setBorder(new LineBorder(Color.BLACK, 2,true));
 
-        ImageIcon logo = new ImageIcon("tungtungsahur.png");
+
+        ImageIcon logo = new ImageIcon("logo.png");
         JLabel logoLabel = new JLabel(logo);
         logoLabel.setBounds(0,0,logo.getIconWidth(),logo.getIconHeight());
+
+        //Fix this hover function
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent evt) {
+                button.setBackground(new Color(80,180,255));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent evt) {
+                button.setBackground(new Color(100,200,255));
+            }
+        });
 
         //Adds the items to the main panel
         mainPanel.add(logoLabel);
@@ -113,6 +132,11 @@ public class main{
         login.setFont(new Font("Times New Roman",Font.PLAIN,30));
         loginPanel.add(login);
 
+        JButton back_login = new JButton("Back");
+        back_login.setBounds(100,935,150,35);
+        back_login.setFont(new Font("Times New Roman",Font.PLAIN,15));
+        loginPanel.add(back_login);
+        back_login.addActionListener(e -> cardLayout.show(panel, "mainPanel"));
         //When the login button is pressed, the data is collected and checks if this is in the database
         login.addActionListener(e -> {
             String username_text = username_input.getText();
@@ -188,6 +212,13 @@ public class main{
         signIn.setBounds(700,650,300,60);
         signIn.setFont(new Font("Times New Roman",Font.PLAIN,30));
         signUpPanel.add(signIn);
+
+        JButton back_signin = new JButton("Back");
+        back_signin.setBounds(100,935,150,35);
+        back_signin.setFont(new Font("Times New Roman",Font.PLAIN,15));
+        loginPanel.add(back_signin);
+
+        back_signin.addActionListener(e -> cardLayout.show(panel, "mainPanel"));
 
         //When the sign-up button is pressed, the data is collected and checks if this is in the database
         signIn.addActionListener(e -> {
