@@ -50,6 +50,7 @@ public class main{
         //Main Page Panel
         JPanel mainPanel = new JPanel(null);
         mainPanel.setPreferredSize(new Dimension(2000,2000));
+        mainPanel.setBackground(new Color(209,216,17));
 
         //Characteristics/items for the main page
         Label label = new Label("Volunteering Hub");
@@ -60,11 +61,14 @@ public class main{
         button.setBounds(700,500,300,60);
         button.setFont(new Font("Times New Roman",Font.PLAIN,15));
         button.setBorder(new LineBorder(Color.BLACK, 2,true));
+        button.setBackground(Color.WHITE);
+
 
         JButton button2 = new JButton("Sign Up");
         button2.setBounds(700,600,300,60);
         button2.setFont(new Font("Times New Roman",Font.PLAIN,15));
         button2.setBorder(new LineBorder(Color.BLACK, 2,true));
+        button2.setBackground(Color.WHITE);
 
 
         ImageIcon logo = new ImageIcon("logo.png");
@@ -93,6 +97,7 @@ public class main{
         //Login Panel
         JPanel loginPanel = new JPanel(null);
         loginPanel.setPreferredSize(new Dimension(2000,2000));
+        loginPanel.setBackground(new Color(209,216,17));
 
         //Characteristics/items for the login page
         JLabel ran = new JLabel("Log in to the Volunteering Hub");
@@ -155,6 +160,7 @@ public class main{
         //Signup Panel
         JPanel signUpPanel = new JPanel(null);
         signUpPanel.setPreferredSize(new Dimension(2000,2000));
+        signUpPanel.setBackground(new Color(209,216,17));
 
         JLabel signUp = new JLabel("Sign up to the Volunteering Hub");
         signUp.setBounds(475,100,800,250);
@@ -237,6 +243,7 @@ public class main{
         JPanel eventab = new JPanel(null);
         eventab.setPreferredSize(new Dimension(2000,2000));
         eventab.setLayout(new BoxLayout(eventab,BoxLayout.Y_AXIS));
+        eventab.setBackground(new Color(209,216,17));
 
         //Fix Event Scroller
         for(Event e: events.values()){
