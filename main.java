@@ -54,19 +54,19 @@ public class main{
 
         //Characteristics/items for the main page
         Label label = new Label("Volunteering Hub");
-        label.setBounds(550,150,600,250);
-        label.setFont(new Font("Times New Roman",Font.PLAIN,80));
+        label.setBounds(650,150,600,250);
+        label.setFont(new Font("Inter",Font.PLAIN,50));
 
         JButton button = new JButton("Log In");
         button.setBounds(700,500,300,60);
-        button.setFont(new Font("Times New Roman",Font.PLAIN,15));
+        button.setFont(new Font("Inter",Font.PLAIN,15));
         button.setBorder(new LineBorder(Color.BLACK, 2,true));
         button.setBackground(Color.WHITE);
 
 
         JButton button2 = new JButton("Sign Up");
         button2.setBounds(700,600,300,60);
-        button2.setFont(new Font("Times New Roman",Font.PLAIN,15));
+        button2.setFont(new Font("Inter",Font.PLAIN,15));
         button2.setBorder(new LineBorder(Color.BLACK, 2,true));
         button2.setBackground(Color.WHITE);
 
